@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const PostInput = ({
   defaultValue = "",
@@ -7,6 +7,8 @@ const PostInput = ({
   onChange,
 }) => {
   // logic
+  const textareaRef = useRef(null)
+
   const [value, setValue] = useState(defaultValue);
 
   const hanldeChange = (event) => {
@@ -14,6 +16,14 @@ const PostInput = ({
     setValue(value);
     onChange(value);
   };
+  //커서 깜박이 집입시 실행 유즈이펙트
+  useEffect(() => {
+    console.log('textareaRef', textareaRef)
+    textareaRef.current && textareaRef.current.focus()
+    const length = value.length
+    textareaRef.current && textareaRef.current.setSelectionRange(length, length);
+    //자바스크립트 해당요소에 포커스를 두겠다는 명령어
+  }, [])
 
   // view
   return (
@@ -34,6 +44,7 @@ const PostInput = ({
               rows={4}
               placeholder="문구를 작성하세요"
               value={value}
+              ref={textareaRef}
               className="w-full placeholder-churead-gray-300 placeholder-opacity-60 text-churead-gray-400 bg-transparent outline-none resize-none"
               onChange={hanldeChange}
             />

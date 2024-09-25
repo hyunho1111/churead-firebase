@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import Post from "./pages/Post";
 import Profile from "./pages/Profile";
 import { useState } from "react";
@@ -34,7 +34,7 @@ function App() {
               }
             />
             <Route path="/login" element={<Login />} />
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/Sign-up" element={<SignUp />} />
             <Route path="/post" element={<Post onPost={handlePost} />} />
             <Route
               path="/edit"

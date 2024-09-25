@@ -11,6 +11,15 @@ const Home = ({ churead, editedItem, onEdit }) => {
 
   const [feedList, setFeedList] = useState(initialFeedList);
 
+
+  const getData = async () => {
+    // fetch('https://jsonplaceholder.typicode.com/posts')
+    //   .then(response => response.json())
+    //   .then(json => console.log(json))
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+    console.log("data:", data)
+  }
   /**
    * 아이템 삭제하기
    * 1. 휴지통 아이콘이 있는 버튼을 클릭한다
@@ -71,6 +80,7 @@ const Home = ({ churead, editedItem, onEdit }) => {
       <Header />
       {/* END: 헤더 영역 */}
       <main className="h-full overflow-auto">
+        <button type="button" onClick={getData}>데이타 찍어보기</button>
         <div>
           {/* START: 피드 영역 */}
           <ul>

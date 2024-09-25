@@ -13,6 +13,13 @@ const Post = ({ onPost }) => {
 
   const handlePost = (event) => {
     event.preventDefault(); // 폼 제출시 새로고침 방지 메소드
+
+    const resultChuread = churead.trim()
+    if (!resultChuread) {
+      alert("입력해주세요")
+      return
+    }
+
     onPost(churead); // 부모에게 churead입력값 넘겨주기
     history("/"); // home화면으로 이동
   };
